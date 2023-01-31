@@ -18,6 +18,7 @@ function myMiddleware(request, response, next) {
     next() 
 }
 
-usersRoutes.post('/', myMiddleware, userController.create)
+usersRoutes.use(myMiddleware)
+usersRoutes.post('/', userController.create)
 
 module.exports = usersRoutes
