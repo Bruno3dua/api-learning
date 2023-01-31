@@ -17,7 +17,6 @@ function myMiddleware(request, response, next) {
 
     next() 
 }
-
 usersRoutes.use(myMiddleware)
 usersRoutes.post('/', userController.create)
 
