@@ -1,23 +1,10 @@
 const express = require('express')
 
+const routes = require('./routes')
+
 const app = express()
-
-//usando parâmetros
-app.get('/message/:id/:user', (request, response) => {
-    response.send(`
-    Id da mensagem: ${request.params.id}.
-    e o usuário: ${request.params.user}.
-    `)
-})
-
-//usando query
-app.get('/users', (request, response) => {
-    const { page, limit } = request.query
-    response.send(`
-    Página: ${page}.
-    Limite: ${limit}.
-    `)
-})
+app.use(express.json()) //indica para a aplicação que o response vai vir em JSON
+app.use(routes)
 
 const PORT = 3333
 app.listen(PORT, () => console.log(`Server is running on port ${PORT}`))
